@@ -1,9 +1,11 @@
 package com.example.textstopwatch;
 
 import android.app.Activity;
+import android.app.SearchManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,10 +29,9 @@ public class MainActivity extends Activity {
         }
         running_Timer();
     }
-
+/* Saves instance vars when the app goes into the background*/
     @Override
-    public void onSaveInstanceState(
-            Bundle savedInstanceState) {
+    public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt("seconds", sec);
         savedInstanceState.putBoolean("running", is_running);
         savedInstanceState.putBoolean("wasRunning", was_running);
@@ -50,20 +51,7 @@ public class MainActivity extends Activity {
             is_running = true;
         }
     }
-
-    public void onClickStart(View view) {
-        is_running = true;
-    }
-
-    public void onClickStop(View view) {
-        is_running = false;
-    }
-
-    public void onClickReset(View view) {
-        is_running = false;
-        sec = 0;
-    }
-
+    //code to run the timer
     private void running_Timer() {
         final TextView t_View = (TextView) findViewById(R.id.time_view);
         final Handler handle = new Handler();
@@ -81,8 +69,11 @@ public class MainActivity extends Activity {
                 handle.postDelayed(this, 1000);
             }
         });
+        findViewById(R.id.start_button).setOnClickListener(v -> is_running = true);
+        findViewById(R.id.stop_button).setOnClickListener(v -> is_running = false);
+        findViewById(R.id.reset_button).setOnClickListener(v -> { is_running = false; sec = 0;});
     }
-
+    //Double tap the back button to exit the application.
     @Override
     public void onBackPressed() {
         if (backPressedTime + 2000 > System.currentTimeMillis()) {

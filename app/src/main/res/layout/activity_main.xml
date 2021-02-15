@@ -16,7 +16,8 @@
         android:layout_marginTop="100dp"
         android:background="@drawable/border"
         android:textAppearance="@android:style/TextAppearance.Large"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        />
 
     <Button
         android:id="@+id/start_button"
@@ -24,7 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:onClick="onClickStart"
         android:text="@string/start" />
 
     <Button
@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:onClick="onClickStop"
         android:text="@string/stop" />
 
     <Button
@@ -42,6 +41,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:onClick="onClickReset"
         android:text="@string/reset" />
 </LinearLayout>
